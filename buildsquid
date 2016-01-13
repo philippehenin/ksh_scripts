@@ -1,0 +1,13 @@
+apt-get update && apt-get dist-upgrade
+apt-get install build-essential fakeroot devscripts gawk gcc-multilib dpatch
+apt-get build-dep squid3
+apt-get build-dep openssl
+apt-get source squid3
+#vi squid3-3.3.8/debian/rules
+cd squid3-3.3.8
+apt-get install libssl-dev
+#debuild -us -uc -b
+./configure
+make
+make install
+squid -v
